@@ -6,5 +6,6 @@ import RoleController from '../controllers/Role/controller'
 const router = new Router()
 
 router.get('/role', RoleController.getAll)
+router.get('/role/:id', RoleController.getOne)
 
 export default router
