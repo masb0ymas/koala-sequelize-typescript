@@ -6,6 +6,12 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "nodemon ./src/app.ts",
+    "lint": "npx eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix",
+    "clean": "rm -rf ./dist",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "before-build": "npm run lint && npm run type-check && npm run clean",
+    "build": "npm run before-build && tsc -p .",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:fresh": "npx sequelize-cli db:migrate:undo:all && npm run db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
