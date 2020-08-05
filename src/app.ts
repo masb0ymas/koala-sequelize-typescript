@@ -1,13 +1,15 @@
-import * as Koa from 'koa'
-import * as bodyParser from 'koa-bodyparser'
-import * as cors from '@koa/cors'
-import * as helmet from 'koa-helmet'
+import Koa from 'koa'
+import bodyParser from 'koa-bodyparser'
+import cors from '@koa/cors'
+import helmet from 'koa-helmet'
+import logger from 'koa-logger'
 
 const app = new Koa()
 const port = process.env.PORT || '8000'
 
 app.use(helmet())
 app.use(cors())
+app.use(logger())
 app.use(bodyParser())
 
 app.listen(port, () => {
