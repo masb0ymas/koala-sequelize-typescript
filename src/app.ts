@@ -5,6 +5,8 @@ import helmet from 'koa-helmet'
 import logger from 'koa-logger'
 import router from './routes/index'
 
+require('dotenv').config()
+
 const app = new Koa()
 const port = process.env.PORT || '8000'
 
