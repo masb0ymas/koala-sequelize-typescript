@@ -51,7 +51,6 @@ export default class RoleController {
       ctx.status = 404
       ctx.body = {
         message: 'Data tidak ditemukan atau sudah terhapus!',
-        data,
       }
     } else {
       await data.update(ctx.request.body || {})
@@ -72,7 +71,6 @@ export default class RoleController {
       ctx.status = 404
       ctx.body = {
         message: 'Data tidak ditemukan atau sudah terhapus!',
-        data,
       }
     } else {
       await data?.destroy()
@@ -80,7 +78,6 @@ export default class RoleController {
       ctx.status = 200
       ctx.body = {
         message: 'Data berhasil dihapus!',
-        data,
       }
     }
   }
