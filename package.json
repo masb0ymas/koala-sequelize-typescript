@@ -1,7 +1,7 @@
 {
   "name": "koala-sequelize-typescript",
   "version": "1.0.0",
-  "description": "Just boilerplate koa, sequelize dan typescript",
+  "description": "Just boilerplate 🐨 koa, sequelize dan typescript",
   "main": "app.ts",
   "scripts": {
     "start": "nodemon ./src/app.ts",
