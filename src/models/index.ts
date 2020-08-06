@@ -1,5 +1,5 @@
-import Roles from './roles'
+import Role from './roles'
 
 export default {
-  Roles,
+  Role,
 }

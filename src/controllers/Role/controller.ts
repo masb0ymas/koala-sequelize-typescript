@@ -4,12 +4,12 @@ import useValidation from '../../helpers/useValidation'
 import models from '../../models'
 import schema from './schema'
 
-const { Roles } = models
+const { Role } = models
 
 export default class RoleController {
   public static async getAll(ctx: Context) {
-    const data = await Roles.findAll()
-    const total = await Roles.count()
+    const data = await Role.findAll()
+    const total = await Role.count()
 
     ctx.status = 200
     ctx.body = {
@@ -20,7 +20,7 @@ export default class RoleController {
 
   public static async getOne(ctx: Context) {
     const { id } = ctx.params
-    const data = await Roles.findByPk(id)
+    const data = await Role.findByPk(id)
 
     if (!data) {
       ctx.status = 404
@@ -37,7 +37,7 @@ export default class RoleController {
 
   public static async create(ctx: Context) {
     const value = useValidation(schema.create, ctx.request.body)
-    const data = await Roles.create(value)
+    const data = await Role.create(value)
 
     ctx.status = 201
     ctx.body = {
@@ -48,7 +48,7 @@ export default class RoleController {
 
   public static async update(ctx: Context) {
     const { id } = ctx.params
-    const data = await Roles.findByPk(id)
+    const data = await Role.findByPk(id)
 
     if (!data) {
       ctx.status = 404
@@ -68,7 +68,7 @@ export default class RoleController {
 
   public static async delete(ctx: Context) {
     const { id } = ctx.params
-    const data = await Roles.findByPk(id)
+    const data = await Role.findByPk(id)
 
     if (!data) {
       ctx.status = 404
