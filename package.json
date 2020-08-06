@@ -44,7 +44,8 @@
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.4",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -66,6 +67,7 @@
     "@types/koa__cors": "^3.0.1",
     "@types/node": "^14.0.27",
     "@types/yamljs": "^0.2.31",
+    "@types/yup": "^0.29.4",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
     "babel-plugin-module-resolver": "^4.0.0",
