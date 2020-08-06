@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
+import useValidation from '../../helpers/useValidation'
 import models from '../../models'
+import schema from './schema'
 
 const { Roles } = models
 
@@ -34,7 +36,8 @@ export default class RoleController {
   }
 
   public static async create(ctx: Context) {
-    const data = await Roles.create(ctx.request.body)
+    const value = useValidation(schema.create, ctx.request.body)
+    const data = await Roles.create(value)
 
     ctx.status = 201
     ctx.body = {
