@@ -3,8 +3,11 @@ import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
-import router from './routes/index'
+import koaSwagger from 'koa2-swagger-ui'
+import yaml2js from 'yamljs'
+import _path from 'path'
 import models from './models/_instance'
+import router from './routes/index'
 
 require('dotenv').config()
 
@@ -28,6 +31,16 @@ models.sequelize
 
 app.use(router.routes())
 app.use(router.allowedMethods())
+
+// Generate Docs
+const spec = yaml2js.load(_path.resolve('./docs/swagger/swagger-config.yaml'))
+
+app.use(
+  koaSwagger({
+    routePrefix: '/v1/api-docs',
+    swaggerOptions: { spec },
+  })
+)
 
 app.listen(port, () => {
   console.log(`🚀 App listening on the port ${port}`)
