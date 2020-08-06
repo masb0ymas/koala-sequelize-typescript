@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { BaseContext } from 'koa'
 import Router from 'koa-router'
-import publicRoute from './publicRoute'
+import publicRoute from './public'
 
 const router = new Router()
 
