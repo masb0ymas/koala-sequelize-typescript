@@ -5,3 +5,9 @@ export default {
   Role,
   User,
 }
+
+/*
+  Models Association
+*/
+
+User.belongsTo(Role)
