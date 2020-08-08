@@ -2,13 +2,13 @@
 import { Context } from 'koa'
 import jwt from 'jsonwebtoken'
 import { LoginInterface } from '../../models/user'
-import { getUniqueCodev2 } from '../../helpers/Common'
+import { getUniqueCodev2, getToken } from '../../helpers/Common'
 import useValidation from '../../helpers/useValidation'
 import createDirNotExist from '../../utils/Directory'
 import models from '../../models'
 import schema from '../User/schema'
 
-const { User } = models
+const { User, Role } = models
 const { JWT_SECRET }: any = process.env
 const expiresToken = 86400 * 1 // 1 Days
 
@@ -103,6 +103,26 @@ export default class AuthController {
       ctx.status = 404
       ctx.body = {
         message: 'Data tidak ditemukan!',
+      }
+    }
+  }
+
+  public static async profile(ctx: Context) {
+    const token = getToken(ctx.request.header)
+
+    if (token) {
+      const decodeToken: any = jwt.decode(token)
+      const including = [{ model: Role }]
+
+      const data = await User.findByPk(decodeToken?.id, { include: including })
+      ctx.status = 200
+      ctx.body = {
+        data,
+      }
+    } else {
+      ctx.status = 401
+      ctx.body = {
+        message: 'Unauthorized. Please Re-login...',
       }
     }
   }
