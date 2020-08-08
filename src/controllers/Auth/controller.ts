@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
 import jwt from 'jsonwebtoken'
-import { LoginInterface } from '../../models/user'
 import { getUniqueCodev2, getToken } from '../../helpers/Common'
 import useValidation from '../../helpers/useValidation'
 import createDirNotExist from '../../utils/Directory'
@@ -54,7 +53,7 @@ export default class AuthController {
   }
 
   public static async signIn(ctx: Context) {
-    const { email, password }: LoginInterface = ctx.request.body
+    const { email, password } = useValidation(schema.login, ctx.request.body)
 
     const userData = await User.scope('withPassword').findOne({
       where: { email },
