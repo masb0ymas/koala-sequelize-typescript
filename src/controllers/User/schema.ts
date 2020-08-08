@@ -15,6 +15,7 @@ const create = yup.object().shape({
     .string()
     .min(8, 'Minimal 8 karakter')
     .oneOf([yup.ref('newPassword')], 'Password tidak sama'),
+  RoleId: yup.string().required('Role wajib diisi'),
 })
 
 const update = yup.object().shape({
@@ -32,6 +33,7 @@ const update = yup.object().shape({
     .string()
     .min(8, 'Minimal 8 karakter')
     .oneOf([yup.ref('newPassword')], 'Password tidak sama'),
+  RoleId: yup.string().required('Role wajib diisi'),
 })
 
 const createPassword = yup.object().shape({
