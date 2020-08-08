@@ -42,6 +42,81 @@ components:
 #   - auth_token:
 paths:
   #
+  # Tag Auth
+  #
+  /auth/sign-up:
+    post:
+      tags:
+        - Auth
+      summary: 'Create New Account'
+      requestBody:
+        required: true
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                email:
+                  type: string
+                newPassword:
+                  type: string
+                confirmNewPassword:
+                  type: string
+                phone:
+                  type: string
+                RoleId:
+                  type: string
+              required:
+                - fullName
+                - email
+                - newPassword
+                - confirmNewPassword
+                - phone
+                - RoleId
+      responses:
+        401:
+          description: 'Unauthorized'
+        200:
+          description: 'Create New Account'
+  /auth/sign-in:
+    post:
+      tags:
+        - Auth
+      summary: 'Login your account'
+      requestBody:
+        required: true
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        401:
+          description: 'Unauthorized'
+        200:
+          description: 'Login your account'
+  /auth/profile:
+    get:
+      tags:
+        - Auth
+      summary: 'Get Profile'
+      security:
+        - auth_token: []
+      responses:
+        401:
+          description: 'Unauthorized'
+        200:
+          description: 'Get Profile'
+  #
   # Tag Role
   #
   /role:
