@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
 import jwt from 'jsonwebtoken'
-import { getUniqueCodev2, getToken } from '../../helpers/Common'
+import { isObject } from 'lodash'
+import { getUniqueCodev2, verifyToken } from '../../helpers/Common'
 import useValidation from '../../helpers/useValidation'
 import createDirNotExist from '../../utils/Directory'
 import models from '../../models'
@@ -107,12 +108,13 @@ export default class AuthController {
   }
 
   public static async profile(ctx: Context) {
-    const token = getToken(ctx.request.header)
+    const token = verifyToken(ctx.request.header)
 
-    if (token) {
-      const decodeToken: any = jwt.decode(token)
+    if (isObject(token?.data)) {
+      const decodeToken = token?.data
       const including = [{ model: Role }]
 
+      // @ts-ignore
       const data = await User.findByPk(decodeToken?.id, { include: including })
       ctx.status = 200
       ctx.body = {
@@ -121,7 +123,7 @@ export default class AuthController {
     } else {
       ctx.status = 401
       ctx.body = {
-        message: 'Unauthorized. Please Re-login...',
+        message: `${token?.message}. Please Re-login...`,
       }
     }
   }
