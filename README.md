@@ -28,7 +28,7 @@
 - [TypeScript](https://github.com/microsoft/TypeScript) v3.8.2
 - [Sequelize ORM](https://github.com/sequelize/sequelize) v6
 - [Nodemailer](https://github.com/nodemailer/nodemailer)
-- [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML for E-mail
+- [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML
 - [Yup](https://github.com/jquense/yup) for validation schema
 - JavaScript Style [Airbnb Base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
 - Formating code using [Prettier](https://github.com/prettier/prettier) Integration [Eslint](https://github.com/prettier/eslint-config-prettier)
