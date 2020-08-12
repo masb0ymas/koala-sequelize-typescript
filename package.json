@@ -2,7 +2,7 @@
   "name": "koala-sequelize-typescript",
   "version": "1.0.0",
   "description": "Just boilerplate 🐨 koa, sequelize dan typescript",
-  "main": "app.ts",
+  "main": "./src/app.ts",
   "scripts": {
     "start": "npm run dev",
     "dev": "nodemon ./src/app.ts",
@@ -96,5 +96,8 @@
     "sequelize-cli": "^6.2.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=10.x"
   }
 }

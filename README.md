@@ -2,7 +2,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/npm-%3E%3D6.10.0-blue.svg" />
-  <img src="https://img.shields.io/badge/node-%3E%3D12.13.0-blue.svg" />
+  <img src="https://img.shields.io/badge/node-%3E%3D10.x-blue.svg" />
   <a href="https://github.com/masb0ymas/koala-sequelize-typescript#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -15,6 +15,13 @@
 </p>
 
 > Just boilerplate 🐨 koa, sequelize dan typescript
+
+## Prerequisites
+
+- npm >= 6.10.0
+- node >= 10.x
+- eslint >= 6.7.2
+- Familiar with TypeScript 💪
 
 ## Install
 
