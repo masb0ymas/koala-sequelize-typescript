@@ -53,7 +53,7 @@ yarn run start
 yarn run test
 ```
 
-## SMTP Email
+## SMTP Basic
 
 ```sh
 MAIL_DRIVER=smtp
