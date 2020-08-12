@@ -3,6 +3,7 @@ import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
+import serve from 'koa-static'
 import koaSwagger from 'koa2-swagger-ui'
 import yaml2js from 'yamljs'
 import _path from 'path'
@@ -18,6 +19,7 @@ app.use(helmet())
 app.use(cors())
 app.use(logger())
 app.use(bodyParser())
+app.use(serve(_path.join(`${__dirname}/../`, 'public')))
 
 // Initial DB
 models.sequelize
