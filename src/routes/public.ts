@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Router from 'koa-router'
-import AuthController from '../controllers/Auth/controller'
-import RoleController from '../controllers/Role/controller'
+import AuthController from 'controllers/Auth/controller'
+import RoleController from 'controllers/Role/controller'
 
 const router = new Router()
 
