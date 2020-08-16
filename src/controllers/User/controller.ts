@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
-import useValidation from '../../helpers/useValidation'
-import models from '../../models'
+import useValidation from 'helpers/useValidation'
+import models from 'models'
 import schema from './schema'
 
 const { User } = models
