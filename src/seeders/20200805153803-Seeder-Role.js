@@ -1,4 +1,4 @@
-import ConstRole from '../constants/ConstRole'
+import ConstRole from 'constants/ConstRole'
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
