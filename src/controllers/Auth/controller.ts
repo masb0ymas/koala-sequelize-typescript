@@ -2,10 +2,10 @@
 import { Context } from 'koa'
 import jwt from 'jsonwebtoken'
 import { isObject } from 'lodash'
-import { getUniqueCodev2, verifyToken } from '../../helpers/Common'
-import useValidation from '../../helpers/useValidation'
-import createDirNotExist from '../../utils/Directory'
-import models from '../../models'
+import { getUniqueCodev2, verifyToken } from 'helpers/Common'
+import useValidation from 'helpers/useValidation'
+import createDirNotExist from 'utils/Directory'
+import models from 'models'
 import schema from '../User/schema'
 
 const { User, Role } = models
