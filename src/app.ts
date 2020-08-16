@@ -7,8 +7,8 @@ import serve from 'koa-static'
 import koaSwagger from 'koa2-swagger-ui'
 import yaml2js from 'yamljs'
 import _path from 'path'
-import models from './models/_instance'
-import router from './routes/index'
+import models from 'models/_instance'
+import router from 'routes/index'
 
 require('dotenv').config()
 
