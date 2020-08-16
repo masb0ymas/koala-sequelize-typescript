@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import { Model, Optional, DataTypes } from 'sequelize'
 import bcrypt from 'bcrypt'
-import schemaUser from '../controllers/User/schema'
-import SequelizeAttributes from '../utils/SequelizeAttributes'
+import schemaUser from 'controllers/User/schema'
+import SequelizeAttributes from 'utils/SequelizeAttributes'
 import db from './_instance'
 
 interface UserAttributes {
