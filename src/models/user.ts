@@ -5,7 +5,7 @@ import schemaUser from 'controllers/User/schema'
 import SequelizeAttributes from 'utils/SequelizeAttributes'
 import db from './_instance'
 
-interface UserAttributes {
+export interface UserAttributes {
   id: string
   fullName: string
   email: string
@@ -19,7 +19,12 @@ interface UserAttributes {
   updatedAt?: Date
 }
 
-export interface LoginInterface {
+export interface TokenAttributes {
+  data: UserAttributes
+  message: string
+}
+
+export interface LoginAttributes {
   email: string
   password: string
 }
