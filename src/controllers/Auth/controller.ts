@@ -26,7 +26,7 @@ routes.post('/auth/sign-in', async (ctx: Context) => {
   }
 })
 
-routes.get('/profile', async (ctx: Context) => {
+routes.get('/auth/profile', async (ctx: Context) => {
   const token = verifyToken(ctx.request.header)
   // @ts-ignore
   const { status, message, data } = await AuthService.profile(token)
