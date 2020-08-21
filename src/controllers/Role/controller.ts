@@ -1,87 +1,70 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
-import models from 'models'
-import useValidation from 'helpers/useValidation'
-import schema from './schema'
+import { FilterQueryAttributes } from 'models'
+import routes from 'routes/public'
+import RoleService from './service'
 
-const { Role } = models
+routes.get('/role', async (ctx: Context) => {
+  const {
+    page,
+    pageSize,
+    filtered,
+    sorted,
+  }: FilterQueryAttributes = ctx.request.query
+  const { data, total } = await RoleService.getAll(
+    page,
+    pageSize,
+    filtered,
+    sorted
+  )
 
-export default class RoleController {
-  public static async getAll(ctx: Context) {
-    const data = await Role.findAll()
-    const total = await Role.count()
-
-    ctx.status = 200
-    ctx.body = {
-      data,
-      total,
-    }
+  ctx.status = 200
+  ctx.body = {
+    data,
+    total,
   }
+})
 
-  public static async getOne(ctx: Context) {
-    const { id } = ctx.params
-    const data = await Role.findByPk(id)
+routes.get('/role/:id', async (ctx: Context) => {
+  const { id } = ctx.params
+  const { status, message, data } = await RoleService.getOne(id)
 
-    if (!data) {
-      ctx.status = 404
-      ctx.body = {
-        message: 'Data tidak ditemukan atau sudah terhapus!',
-      }
-    } else {
-      ctx.status = 200
-      ctx.body = {
-        data,
-      }
-    }
+  ctx.status = status
+  ctx.body = {
+    message,
+    data,
   }
+})
 
-  public static async create(ctx: Context) {
-    const value = useValidation(schema.create, ctx.request.body)
-    const data = await Role.create(value)
+routes.post('/role', async (ctx: Context) => {
+  const formData = ctx.request.body
+  const { message, data } = await RoleService.create(formData)
 
-    ctx.status = 201
-    ctx.body = {
-      message: 'Data berhasil ditambahkan',
-      data,
-    }
+  ctx.status = 201
+  ctx.body = {
+    message,
+    data,
   }
+})
 
-  public static async update(ctx: Context) {
-    const { id } = ctx.params
-    const data = await Role.findByPk(id)
+routes.put('/role/:id', async (ctx: Context) => {
+  const { id } = ctx.params
+  const formData = ctx.request.body
+  const { status, message, data } = await RoleService.update(id, formData)
 
-    if (!data) {
-      ctx.status = 404
-      ctx.body = {
-        message: 'Data tidak ditemukan atau sudah terhapus!',
-      }
-    } else {
-      await data.update(ctx.request.body || {})
-
-      ctx.status = 200
-      ctx.body = {
-        message: 'Data berhasil diperbarui!',
-        data,
-      }
-    }
+  ctx.status = status
+  ctx.body = {
+    message,
+    data,
   }
+})
 
-  public static async delete(ctx: Context) {
-    const { id } = ctx.params
-    const data = await Role.findByPk(id)
+routes.delete('/role/:id', async (ctx: Context) => {
+  const { id } = ctx.params
+  const { status, message } = await RoleService.delete(id)
 
-    if (!data) {
-      ctx.status = 404
-      ctx.body = {
-        message: 'Data tidak ditemukan atau sudah terhapus!',
-      }
-    } else {
-      await data?.destroy()
-
-      ctx.status = 200
-      ctx.body = {
-        message: 'Data berhasil dihapus!',
-      }
-    }
+  ctx.status = status
+  ctx.body = {
+    message,
   }
-}
+})
