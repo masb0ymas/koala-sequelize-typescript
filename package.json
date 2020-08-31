@@ -38,7 +38,7 @@
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "bcrypt": "^5.0.0",
-    "date-fns": "^2.16.0",
+    "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "googleapis": "^59.0.0",
     "handlebars": "^4.7.6",
