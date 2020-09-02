@@ -56,7 +56,7 @@
     "nodemailer": "^6.4.11",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.4",
+    "sequelize": "^6.3.5",
     "yamljs": "^0.3.0",
     "yup": "^0.29.3"
   },
@@ -89,7 +89,7 @@
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.10.1",
     "babel-plugin-module-resolver": "^4.0.0",
-    "eslint": "7.8.0",
+    "eslint": "7.8.1",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-babel-module": "^5.1.2",
