@@ -61,7 +61,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.5",
+    "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -82,7 +82,7 @@
     "@types/koa-static": "^4.0.1",
     "@types/koa__cors": "^3.0.1",
     "@types/lodash": "^4.14.161",
-    "@types/node": "^14.6.3",
+    "@types/node": "^14.6.4",
     "@types/nodemailer": "^6.4.0",
     "@types/yamljs": "^0.2.31",
     "@types/yup": "^0.29.6",
