@@ -3833,14 +3833,14 @@ koa-static@^5.0.0:
     debug "^3.1.0"
     koa-send "^5.0.0"
 
-koa2-swagger-ui@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.0.tgz#e464f3250fad0e62a206de773e95a9316f0370da"
-  integrity sha512-CTqNYzMzj1vnCcZLYTUcJtKBt5pRYEqPpqvF2HNhRm9SOYFj3xZ53qYqo4dlEXFOf1LHY1VFL609T3LgBybLGg==
+koa2-swagger-ui@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.1.tgz#3c517ea4ee3b015b18bfa3100ec330a1dde79df8"
+  integrity sha512-vlI+yso2kjKF1clGO2OJBnK4/iPnXrmEB+lUhUY5mBW0F/WhsQi/PXMUUGInMQufD0sZqW2n1mJKeWPFe49FWw==
   dependencies:
     "@types/koa" "^2.11.4"
     handlebars "^4.7.6"
-    lodash.defaultsdeep "^4.6.1"
+    lodash "^4.17.20"
     read-pkg-up "^7.0.1"
 
 koa@^2.13.0:
@@ -3941,11 +3941,6 @@ lodash-es@^4.17.11:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
   integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
-
-lodash.defaultsdeep@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
-  integrity sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==
 
 lodash.includes@^4.3.0:
   version "4.3.0"
