@@ -2,6 +2,7 @@
 import { Context } from 'koa'
 import { FilterQueryAttributes } from 'models'
 import routes from 'routes/public'
+import Authorization from 'middlewares/Authorization'
 import RoleService from './service'
 
 routes.get('/role', async (ctx: Context) => {
@@ -36,7 +37,7 @@ routes.get('/role/:id', async (ctx: Context) => {
   }
 })
 
-routes.post('/role', async (ctx: Context) => {
+routes.post('/role', Authorization, async (ctx: Context) => {
   const formData = ctx.request.body
   const { message, data } = await RoleService.create(formData)
 
@@ -47,7 +48,7 @@ routes.post('/role', async (ctx: Context) => {
   }
 })
 
-routes.put('/role/:id', async (ctx: Context) => {
+routes.put('/role/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
   const formData = ctx.request.body
   const { status, message, data } = await RoleService.update(id, formData)
@@ -59,7 +60,7 @@ routes.put('/role/:id', async (ctx: Context) => {
   }
 })
 
-routes.delete('/role/:id', async (ctx: Context) => {
+routes.delete('/role/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
   const { status, message } = await RoleService.delete(id)
 
