@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Context } from 'koa'
 import routes from 'routes/public'
-import { verifyToken } from 'helpers/Common'
+import { verifyToken } from 'helpers/Token'
 import AuthService from './service'
 
 routes.post('/auth/sign-up', async (ctx: Context) => {
