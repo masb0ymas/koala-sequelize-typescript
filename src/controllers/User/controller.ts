@@ -5,7 +5,7 @@ import routes from 'routes/public'
 import Authorization from 'middlewares/Authorization'
 import UserService from './service'
 
-routes.get('/user', async (ctx: Context) => {
+routes.get('/user', Authorization, async (ctx: Context) => {
   const {
     page,
     pageSize,
@@ -26,7 +26,7 @@ routes.get('/user', async (ctx: Context) => {
   }
 })
 
-routes.get('/user/:id', async (ctx: Context) => {
+routes.get('/user/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
   const { status, message, data } = await UserService.getOne(id)
 
