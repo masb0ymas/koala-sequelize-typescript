@@ -3791,10 +3791,10 @@ koa-static@^5.0.0:
     debug "^3.1.0"
     koa-send "^5.0.0"
 
-koa2-swagger-ui@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.1.tgz#3c517ea4ee3b015b18bfa3100ec330a1dde79df8"
-  integrity sha512-vlI+yso2kjKF1clGO2OJBnK4/iPnXrmEB+lUhUY5mBW0F/WhsQi/PXMUUGInMQufD0sZqW2n1mJKeWPFe49FWw==
+koa2-swagger-ui@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.2.tgz#b2d41bcb936fe62a1f0d2bfb641e60f5aa50bf5e"
+  integrity sha512-Cz/UNQpD1Oog3ThjVg3xerbeJ59BGhB7Fk4WizWi2AnuadGixy3ijS/B6YpBE9p/5yLXTTmoey7kDpvDRS0LHQ==
   dependencies:
     "@types/koa" "^2.11.4"
     handlebars "^4.7.6"
