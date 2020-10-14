@@ -53,7 +53,7 @@
     "lodash": "^4.17.20",
     "mariadb": "^2.4.2",
     "mysql2": "^2.2.5",
-    "nodemailer": "^6.4.13",
+    "nodemailer": "^6.4.14",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
