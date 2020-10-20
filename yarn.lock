@@ -1089,10 +1089,10 @@
   dependencies:
     "@types/koa" "*"
 
-"@types/koa-helmet@^5.2.0":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@types/koa-helmet/-/koa-helmet-5.2.1.tgz#1b5120353443ab5f11f240bfd9eda1db050e3b46"
-  integrity sha512-RJxLgW03heAALXl5KGxfXXB/LR49PMOtZT/zKg3rmokDdkm2IUr+dflaQ1eaZUts7RorCZePXECNOYjCxDOBOg==
+"@types/koa-helmet@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@types/koa-helmet/-/koa-helmet-6.0.0.tgz#c4e27ce156f62a03561a207dc53d5372f80bfe68"
+  integrity sha512-uRweArZKDSnsTBFoM2fvDNMHwzSUX7ClJSbKmwzDiDu07+eIPOjoZCLPKgKGiurURwcSn9G0EZ7xlQrqj2z7PQ==
   dependencies:
     "@types/helmet" "*"
     "@types/koa" "*"
