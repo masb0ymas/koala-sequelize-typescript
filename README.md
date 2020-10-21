@@ -25,7 +25,7 @@
 
 ## Feature
 
-- [TypeScript](https://github.com/microsoft/TypeScript) v3.8.2
+- [TypeScript](https://github.com/microsoft/TypeScript) v4.0.3
 - [Sequelize ORM](https://github.com/sequelize/sequelize) v6
 - [Nodemailer](https://github.com/nodemailer/nodemailer)
 - [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML
