@@ -15,7 +15,11 @@ require('dotenv').config()
 const app = new Koa()
 const port = process.env.PORT || '8000'
 
-app.use(helmet())
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+)
 app.use(cors())
 app.use(logger())
 app.use(bodyParser())
