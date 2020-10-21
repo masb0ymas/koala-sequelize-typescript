@@ -1119,7 +1119,7 @@
     "@types/koa" "*"
     "@types/koa-send" "*"
 
-"@types/koa@*", "@types/koa@^2.11.4", "@types/koa@^2.11.6":
+"@types/koa@*", "@types/koa@^2.11.5", "@types/koa@^2.11.6":
   version "2.11.6"
   resolved "https://registry.yarnpkg.com/@types/koa/-/koa-2.11.6.tgz#b7030caa6b44af801c2aea13ba77d74aff7484d5"
   integrity sha512-BhyrMj06eQkk04C97fovEDQMpLpd2IxCB4ecitaXwOKGq78Wi2tooaDOWOFGajPk8IkQOAtMppApgSVkYe1F/A==
@@ -3712,12 +3712,12 @@ koa-static@^5.0.0:
     debug "^3.1.0"
     koa-send "^5.0.0"
 
-koa2-swagger-ui@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.2.tgz#b2d41bcb936fe62a1f0d2bfb641e60f5aa50bf5e"
-  integrity sha512-Cz/UNQpD1Oog3ThjVg3xerbeJ59BGhB7Fk4WizWi2AnuadGixy3ijS/B6YpBE9p/5yLXTTmoey7kDpvDRS0LHQ==
+koa2-swagger-ui@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/koa2-swagger-ui/-/koa2-swagger-ui-5.0.3.tgz#1cf5158360b4402d20abbf81c2ce7270c8fa994a"
+  integrity sha512-Io6sgHxSV7SCkjdCnbQURDK+gMDQ4GuWVyM/yPDmhPWV5tPnl6ipY1SWqTB/jHBxDiFS3xNvSsPYrhIKbIujTQ==
   dependencies:
-    "@types/koa" "^2.11.4"
+    "@types/koa" "^2.11.6"
     handlebars "^4.7.6"
     lodash "^4.17.20"
     read-pkg-up "^7.0.1"
