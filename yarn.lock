@@ -1230,14 +1230,6 @@
     "@typescript-eslint/typescript-estree" "4.6.0"
     debug "^4.1.1"
 
-"@typescript-eslint/scope-manager@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-4.5.0.tgz#8dfd53c3256d4357e7d66c2fc8956835f4d239be"
-  integrity sha512-C0cEO0cTMPJ/w4RA/KVe4LFFkkSh9VHoFzKmyaaDWAnPYIEzVCtJ+Un8GZoJhcvq+mPFXEsXa01lcZDHDG6Www==
-  dependencies:
-    "@typescript-eslint/types" "4.5.0"
-    "@typescript-eslint/visitor-keys" "4.5.0"
-
 "@typescript-eslint/scope-manager@4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-4.6.0.tgz#b7d8b57fe354047a72dfb31881d9643092838662"
@@ -1246,29 +1238,10 @@
     "@typescript-eslint/types" "4.6.0"
     "@typescript-eslint/visitor-keys" "4.6.0"
 
-"@typescript-eslint/types@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.5.0.tgz#98256e07bad1c8d15d0c9627ebec82fd971bb3c3"
-  integrity sha512-n2uQoXnyWNk0Les9MtF0gCK3JiWd987JQi97dMSxBOzVoLZXCNtxFckVqt1h8xuI1ix01t+iMY4h4rFMj/303g==
-
 "@typescript-eslint/types@4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.6.0.tgz#157ca925637fd53c193c6bf226a6c02b752dde2f"
   integrity sha512-5FAgjqH68SfFG4UTtIFv+rqYJg0nLjfkjD0iv+5O27a0xEeNZ5rZNDvFGZDizlCD1Ifj7MAbSW2DPMrf0E9zjA==
-
-"@typescript-eslint/typescript-estree@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-4.5.0.tgz#d50cf91ae3a89878401111031eb6fb6d03554f64"
-  integrity sha512-gN1mffq3zwRAjlYWzb5DanarOPdajQwx5MEWkWCk0XvqC8JpafDTeioDoow2L4CA/RkYZu7xEsGZRhqrTsAG8w==
-  dependencies:
-    "@typescript-eslint/types" "4.5.0"
-    "@typescript-eslint/visitor-keys" "4.5.0"
-    debug "^4.1.1"
-    globby "^11.0.1"
-    is-glob "^4.0.1"
-    lodash "^4.17.15"
-    semver "^7.3.2"
-    tsutils "^3.17.1"
 
 "@typescript-eslint/typescript-estree@4.6.0":
   version "4.6.0"
@@ -1283,14 +1256,6 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
-
-"@typescript-eslint/visitor-keys@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-4.5.0.tgz#b59f26213ac597efe87f6b13cf2aabee70542af0"
-  integrity sha512-UHq4FSa55NDZqscRU//O5ROFhHa9Hqn9KWTEvJGTArtTQp5GKv9Zqf6d/Q3YXXcFv4woyBml7fJQlQ+OuqRcHA==
-  dependencies:
-    "@typescript-eslint/types" "4.5.0"
-    eslint-visitor-keys "^2.0.0"
 
 "@typescript-eslint/visitor-keys@4.6.0":
   version "4.6.0"
@@ -2805,10 +2770,21 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-gaxios@^3.0.0, gaxios@^3.2.0:
+gaxios@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-3.2.0.tgz#11b6f0e8fb08d94a10d4d58b044ad3bec6dd486a"
   integrity sha512-+6WPeVzPvOshftpxJwRi2Ozez80tn/hdtOUag7+gajDHRJvAblKxTFSSMPtr2hmnLy7p0mvYz0rMXLBl8pSO7Q==
+  dependencies:
+    abort-controller "^3.0.0"
+    extend "^3.0.2"
+    https-proxy-agent "^5.0.0"
+    is-stream "^2.0.0"
+    node-fetch "^2.3.0"
+
+gaxios@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-4.0.1.tgz#bc7b205a89d883452822cc75e138620c35e3291e"
+  integrity sha512-jOin8xRZ/UytQeBpSXFqIzqU7Fi5TqgPNLlUsSB8kjJ76+FiGBfImF8KJu++c6J4jOldfJUtt0YmkRj2ZpSHTQ==
   dependencies:
     abort-controller "^3.0.0"
     extend "^3.0.2"
@@ -2945,25 +2921,25 @@ google-p12-pem@^3.0.3:
   dependencies:
     node-forge "^0.10.0"
 
-googleapis-common@^4.4.0:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-4.4.1.tgz#ded785eefdbe629b313f566c3049d5613ae7a9ac"
-  integrity sha512-F1QcH8oU7TOuZex9p+XW7TeyLY0332NwBwJ3dZoN+51pXZXB5JjrKswrpgbhuREuIe8xAy8J1rlmFqxeP2mFfA==
+googleapis-common@^4.4.1:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-4.4.2.tgz#8d25b5313c2cd68ea4595f38338f0d8c0d385371"
+  integrity sha512-booWj8k9BwN2j+nbCaThbXscbbsO+FkV4h3xHW+RRC6+RwtqS2I3gqXbP8bqE1BgQBcN+49xFODCfAxy9PGfOQ==
   dependencies:
     extend "^3.0.2"
-    gaxios "^3.2.0"
+    gaxios "^4.0.0"
     google-auth-library "^6.0.0"
     qs "^6.7.0"
     url-template "^2.0.8"
     uuid "^8.0.0"
 
-googleapis@^61.0.0:
-  version "61.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-61.0.0.tgz#90f2ff37fda7f4f524c478188ebc67e7fb1a37b9"
-  integrity sha512-aXaNgWKaALiYrfwrJ0ZYhRo2abyIBcqUjyNMgkbghKJMiCeOwcktlaGseH6JbPlCxXYCE8ZDfvAQqVNsf+6/RA==
+googleapis@^62.0.0:
+  version "62.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-62.0.0.tgz#211910a906cbb9497c2141a16d6623d2e9764e30"
+  integrity sha512-IKWMdnrEzaVcambJ90QjH4Rl6e6L+bljB4SRniPgnhTQ8BG/p/M6fuNhzbBssu61GYu5q8EcxKndmRZQIIo2iQ==
   dependencies:
     google-auth-library "^6.0.0"
-    googleapis-common "^4.4.0"
+    googleapis-common "^4.4.1"
 
 got@^9.6.0:
   version "9.6.0"
