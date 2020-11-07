@@ -35,12 +35,14 @@ class RoleService {
   public static async getOne(id: string) {
     const data = await Role.findByPk(id)
 
-    let code = 200
-    let message = 'data has been received'
+    const code = 200
+    const message = 'data has been received'
 
     if (!data) {
-      code = 404
-      message = 'Data not found or has been deleted!'
+      return {
+        code: 404,
+        message: 'Data not found or has been deleted!',
+      }
     }
 
     return { code, message, data }
@@ -60,7 +62,7 @@ class RoleService {
    * Update Role By Id
    */
   public static async update(id: string, formData: RoleAttributes) {
-    const { data } = await this.getOne(id)
+    const { code, message, data } = await this.getOne(id)
 
     if (data) {
       const value = useValidation(schema.create, {
@@ -71,18 +73,20 @@ class RoleService {
       await data.update(value || {})
     }
 
-    return data
+    return { code, message, data }
   }
 
   /**
    * Delete Role By Id
    */
   public static async delete(id: string) {
-    const { data } = await this.getOne(id)
+    const { code, message, data } = await this.getOne(id)
 
     if (data) {
       await data.destroy()
     }
+
+    return { code, message }
   }
 }
 
