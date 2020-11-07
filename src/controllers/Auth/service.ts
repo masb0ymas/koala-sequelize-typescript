@@ -11,13 +11,14 @@ import { isObject } from 'lodash'
 require('dotenv').config()
 
 const { User, Role } = models
+
 const { JWT_SECRET }: any = process.env
-const expiresToken = 86400 * 1 // 1 Days
+const expiresToken = 7 * 24 * 60 * 60 // 7 Days
 
 /*
   Create the main directory
-  direktori akan dibikin otomatis ketika login,
-  karna direktori ada yang menggunakan User ID
+  The directory will be created automatically when logged in,
+  because there is a directory that uses a User ID
 */
 async function createDirectory(UserId: string) {
   const pathDirectory = [
@@ -50,7 +51,7 @@ class AuthService {
     const value = useValidation(schema.create, newFormData)
     const data = await User.create(value)
     const message =
-      'Registration is successful, check your email for next steps!'
+      'registration is successful, check your email for the next steps'
 
     return { message, data }
   }
@@ -90,35 +91,39 @@ class AuthService {
           // create directory
           await createDirectory(userData.id)
           const data = {
-            token: `JWT ${token}`,
+            token,
             expiresIn: expiresToken,
-            tokenType: 'JWT',
+            tokenType: 'Bearer',
           }
 
           return {
-            status: 200,
-            message: 'Payload token!',
+            code: 200,
+            message: 'access token has been received!',
             data,
           }
         }
 
         return {
-          status: 400,
-          message: 'Email atau password salah!',
+          code: 400,
+          message: 'incorrect email or password!',
           data: null,
         }
       }
 
       /* User not active return error confirm email */
       return {
-        status: 400,
+        code: 400,
         message:
-          'Please check your email account to verify your email and continue the registration process.',
+          'please check your email account to verify your email and continue the registration process.',
         data: null,
       }
     }
 
-    return { status: 404, message: 'Data tidak ditemukan!', data: null }
+    return {
+      code: 404,
+      message: 'data not found or has been deleted',
+      data: null,
+    }
   }
 
   /**
@@ -133,11 +138,11 @@ class AuthService {
       // @ts-ignore
       const data = await User.findByPk(decodeToken?.id, { include: including })
 
-      return { status: 200, message, data }
+      return { code: 200, message, data }
     }
 
     return {
-      status: 401,
+      code: 401,
       message: `${token?.message}. Please Re-login...`,
       data: null,
     }
