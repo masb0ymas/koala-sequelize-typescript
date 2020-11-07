@@ -18,15 +18,15 @@
 
 ## Prerequisites
 
-- npm >= 6.10.0
-- node >= 10.x
-- eslint >= 6.7.2
+- npm >= `v6.x`
+- node >= `v10.x`
+- eslint >= `v7.x`
 - Familiar with TypeScript 💪
 
 ## Feature
 
-- [TypeScript](https://github.com/microsoft/TypeScript) v4.0.3
-- [Sequelize ORM](https://github.com/sequelize/sequelize) v6
+- [TypeScript](https://github.com/microsoft/TypeScript) `v4.x`
+- [Sequelize ORM](https://github.com/sequelize/sequelize) `v6.x`
 - [Nodemailer](https://github.com/nodemailer/nodemailer)
 - [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML
 - [Yup](https://github.com/jquense/yup) for validation schema
@@ -88,10 +88,10 @@ OAUTH_REFRESH_TOKEN=your_refresh_token
 
 👤 **masb0ymas**
 
-- Website: http://minangitcamp.com
-- Twitter: [@fajriajjha1](https://twitter.com/fajriajjha1)
+- Website: https://resume.masb0ymas.vercel.app
+- Twitter: [@masb0ymas](https://twitter.com/masb0ymas)
 - Github: [@masb0ymas](https://github.com/masb0ymas)
-- LinkedIn: [@aji-ajjha](https://linkedin.com/in/aji-ajjha)
+- LinkedIn: [@masb0ymas](https://www.linkedin.com/in/masb0ymas/)
 
 ## Show your support
 
