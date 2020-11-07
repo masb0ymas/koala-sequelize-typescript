@@ -16,7 +16,7 @@ routes.get('/user/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
 
   const { code, message, data } = await UserService.getOne(id)
-  const buildResponse = BuildResponse.get({ message, data })
+  const buildResponse = BuildResponse.get({ code, message, data })
 
   ctx.status = code
   ctx.body = buildResponse
@@ -36,8 +36,8 @@ routes.put('/user/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
   const formData = ctx.request.body
 
-  const data = await UserService.update(id, formData)
-  const buildResponse = BuildResponse.updated({ data })
+  const { code, message, data } = await UserService.update(id, formData)
+  const buildResponse = BuildResponse.updated({ code, message, data })
 
   ctx.status = 200
   ctx.body = buildResponse
@@ -46,8 +46,8 @@ routes.put('/user/:id', Authorization, async (ctx: Context) => {
 routes.delete('/user/:id', Authorization, async (ctx: Context) => {
   const { id } = ctx.params
 
-  await UserService.delete(id)
-  const buildResponse = BuildResponse.deleted({})
+  const { code, message } = await UserService.delete(id)
+  const buildResponse = BuildResponse.deleted({ code, message })
 
   ctx.status = 200
   ctx.body = buildResponse
