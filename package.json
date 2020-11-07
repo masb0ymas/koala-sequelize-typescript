@@ -1,6 +1,6 @@
 {
   "name": "koala-sequelize-typescript",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Just boilerplate 🐨 koa, sequelize dan typescript",
   "main": "./src/app.ts",
   "scripts": {
