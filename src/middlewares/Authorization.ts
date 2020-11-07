@@ -9,6 +9,7 @@ async function Authorization(ctx: Context, next: Next) {
   if (isEmpty(token?.data)) {
     ctx.status = 401
     ctx.body = {
+      code: 401,
       message: token?.message,
     }
     return
