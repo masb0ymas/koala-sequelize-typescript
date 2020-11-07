@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-param-reassign */
 import models from 'models'
-import { filterQueryObject } from 'helpers/Common'
 import useValidation from 'helpers/useValidation'
 import { UserAttributes } from 'models/user'
 import PluginSqlizeQuery from 'modules/SqlizeQuery/PluginSqlizeQuery'
@@ -40,12 +37,14 @@ class UserService {
   public static async getOne(id: string) {
     const data = await User.findByPk(id)
 
-    let code = 200
-    let message = 'data has been received'
+    const code = 200
+    const message = 'data has been received'
 
     if (!data) {
-      code = 404
-      message = 'Data not found or has been deleted!'
+      return {
+        code: 404,
+        message: 'Data not found or has been deleted!',
+      }
     }
 
     return { code, message, data }
@@ -65,7 +64,7 @@ class UserService {
    * Update User By Id
    */
   public static async update(id: string, formData: UserAttributes) {
-    const { data } = await this.getOne(id)
+    const { code, message, data } = await this.getOne(id)
 
     if (data) {
       const value = useValidation(schema.create, {
@@ -76,18 +75,20 @@ class UserService {
       await data.update(value || {})
     }
 
-    return data
+    return { code, message, data }
   }
 
   /**
    * Delete User By Id
    */
   public static async delete(id: string) {
-    const { data } = await this.getOne(id)
+    const { code, message, data } = await this.getOne(id)
 
     if (data) {
       await data.destroy()
     }
+
+    return { code, message }
   }
 }
 
