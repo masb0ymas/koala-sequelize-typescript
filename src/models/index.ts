@@ -1,30 +1,18 @@
 import Role from './roles'
 import User from './user'
 
-export interface FilterAttributes {
-  id: string
-  value: string
-}
-
-export interface SortAttributes {
-  id: string
-  desc: string
-}
-
-export interface FilterQueryAttributes {
-  page: string | number
-  pageSize: string | number
-  filtered: string
-  sorted: string
-}
-
-export default {
+const models = {
   Role,
   User,
 }
 
-/*
-  Models Association
-*/
+export default models
 
-User.belongsTo(Role)
+export type MyModels = typeof models
+
+Object.entries(models).map(([, model]) => {
+  if (model?.associate) {
+    model.associate(models)
+  }
+  return model
+})

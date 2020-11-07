@@ -1,8 +1,8 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import { Model, Optional, DataTypes } from 'sequelize'
 import bcrypt from 'bcrypt'
-import schemaUser from 'controllers/User/schema'
 import SequelizeAttributes from 'utils/SequelizeAttributes'
+import schemaUser from 'controllers/User/schema'
 import db from './_instance'
 
 export interface UserAttributes {
@@ -88,6 +88,10 @@ User.prototype.comparePassword = function (candidatePassword: string) {
       resolve(isMatch)
     })
   })
+}
+
+User.associate = (models) => {
+  User.belongsTo(models.Role, { foreignKey: 'RoleId' })
 }
 
 export default User
