@@ -22,7 +22,8 @@
     "db:seed": "npx sequelize-cli db:seed:all",
     "db:drop": "npx sequelize-cli db:drop",
     "db:reset": "npm run db:drop && npx sequelize-cli db:create && npm run db:migrate && npm run db:seed",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -98,6 +99,7 @@
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2",
     "sequelize-cli": "^6.2.0",
+    "standard-version": "^9.0.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   },
