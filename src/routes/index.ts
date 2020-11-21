@@ -8,6 +8,7 @@ const router = new Router()
 router.get('/', (ctx: BaseContext) => {
   ctx.status = 200
   ctx.body = {
+    code: 200,
     message: 'Welcome to 🐨 KoaLaa TypeScript...',
   }
 })
@@ -15,7 +16,8 @@ router.get('/', (ctx: BaseContext) => {
 router.get('/v1', (ctx: BaseContext) => {
   ctx.status = 403
   ctx.body = {
-    message: 'Hayo Mau ngapain ??',
+    code: 200,
+    message: 'forbidden, wrong access endpoint',
   }
 })
 
