@@ -61,7 +61,7 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "yamljs": "^0.3.0",
-    "yup": "^0.30.0"
+    "yup": "^0.31.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.7",
