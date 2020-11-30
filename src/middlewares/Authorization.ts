@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { Context, Next } from 'koa'
 import { verifyToken } from 'helpers/Token'
 import { isEmpty } from 'lodash'
