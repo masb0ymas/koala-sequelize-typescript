@@ -1,4 +1,14 @@
+import fs from 'fs'
+import path from 'path'
 import models from 'models/_instance'
+
+const pathEnv = path.resolve('.env')
+
+if (!fs.existsSync(pathEnv)) {
+  throw new Error(
+    'Missing env!!!\nCopy / Duplicate ".env.example" root directory to ".env"'
+  )
+}
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('@babel/register')({ extensions: ['.js', '.ts'] })
