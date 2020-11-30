@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](///compare/v2.1.0...v2.2.0) (2020-11-30)
+
+
+### Features
+
+* config fetcher ([1f19975](///commit/1f19975b4a0d4570d93780fc590fcc036b058b40))
+* response internal server ([f57d807](///commit/f57d8073a456c65e3d414831b418fb317449044c))
+
+
+### Bug Fixes
+
+* check .env is exist ([24a3fef](///commit/24a3fef21fc748d7d76385b2614bdd66030ab1f6))
+* common helper ([9b58b93](///commit/9b58b9355c61193cd1b5cc3d1c2e980db857a9a6))
+* import response internal server ([f46fcd6](///commit/f46fcd6d6eee510403b78f48b90f0be3fb7261f3))
+* index routes ([52bc8e0](///commit/52bc8e0898fc345a0d7820028279e9926c5f9957))
+* jwt secret from env ([2c38461](///commit/2c38461d043e1a89d52e274cc5430fbb2101ad70))
+* remove config multer ([e1e3a01](///commit/e1e3a011a143aefbf182183865b338f7837c919d))
+* script generate jwt ([e8a9e81](///commit/e8a9e81620ce1a4a43e8afe12d2611c59c539305))
+* update config email ([0152795](///commit/0152795aae6204f89f8c8688758f98903f998286))
+* update env example ([cbdc51a](///commit/cbdc51ad1cb3243b316b1bf50fa75a618da61874))
+* update script package ([1c1d70f](///commit/1c1d70fe451c01aaf2aef09fbd52c1769af5d352))
+
 ## 2.1.0 (2020-11-12)
 
 
