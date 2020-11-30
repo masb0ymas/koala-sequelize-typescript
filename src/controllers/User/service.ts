@@ -9,7 +9,8 @@ const including = [{ model: Role }]
 
 class UserService {
   /**
-   * Get All User
+   *
+   * @param ctx - Context
    */
   public static async getAll(ctx: any) {
     const { filtered } = ctx.request.query
@@ -32,7 +33,8 @@ class UserService {
   }
 
   /**
-   * Get One User
+   *
+   * @param id
    */
   public static async getOne(id: string) {
     const data = await User.findByPk(id)
@@ -51,7 +53,8 @@ class UserService {
   }
 
   /**
-   * Create User
+   *
+   * @param formData
    */
   public static async create(formData: UserAttributes) {
     const value = useValidation(schema.create, formData)
@@ -61,7 +64,9 @@ class UserService {
   }
 
   /**
-   * Update User By Id
+   *
+   * @param id
+   * @param formData
    */
   public static async update(id: string, formData: UserAttributes) {
     const { code, message, data } = await this.getOne(id)
@@ -79,7 +84,8 @@ class UserService {
   }
 
   /**
-   * Delete User By Id
+   *
+   * @param id
    */
   public static async delete(id: string) {
     const { code, message, data } = await this.getOne(id)

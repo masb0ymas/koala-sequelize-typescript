@@ -8,7 +8,8 @@ const { Role } = models
 
 class RoleService {
   /**
-   * Get All Role
+   *
+   * @param ctx - Context
    */
   public static async getAll(ctx: any) {
     const { includeCount, order, ...queryFind } = PluginSqlizeQuery.generate(
@@ -30,7 +31,8 @@ class RoleService {
   }
 
   /**
-   * Get One Role
+   *
+   * @param id
    */
   public static async getOne(id: string) {
     const data = await Role.findByPk(id)
@@ -49,7 +51,8 @@ class RoleService {
   }
 
   /**
-   * Create Role
+   *
+   * @param formData
    */
   public static async create(formData: RoleAttributes) {
     const value = useValidation(schema.create, formData)
@@ -59,7 +62,9 @@ class RoleService {
   }
 
   /**
-   * Update Role By Id
+   *
+   * @param id
+   * @param formData
    */
   public static async update(id: string, formData: RoleAttributes) {
     const { code, message, data } = await this.getOne(id)
@@ -77,7 +82,8 @@ class RoleService {
   }
 
   /**
-   * Delete Role By Id
+   *
+   * @param id
    */
   public static async delete(id: string) {
     const { code, message, data } = await this.getOne(id)
