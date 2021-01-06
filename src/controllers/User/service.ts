@@ -1,3 +1,4 @@
+import { Context } from 'koa'
 import models from 'models'
 import useValidation from 'helpers/useValidation'
 import { UserAttributes } from 'models/user'
@@ -12,10 +13,10 @@ class UserService {
    *
    * @param ctx - Context
    */
-  public static async getAll(ctx: any) {
+  public static async getAll(ctx: Context) {
     const { filtered } = ctx.request.query
     const { includeCount, order, ...queryFind } = PluginSqlizeQuery.generate(
-      ctx,
+      ctx.request.query,
       User,
       PluginSqlizeQuery.makeIncludeQueryable(filtered, including)
     )

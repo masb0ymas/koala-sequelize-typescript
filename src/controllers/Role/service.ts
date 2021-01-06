@@ -1,3 +1,4 @@
+import { Context } from 'koa'
 import models from 'models'
 import useValidation from 'helpers/useValidation'
 import { RoleAttributes } from 'models/roles'
@@ -11,9 +12,9 @@ class RoleService {
    *
    * @param ctx - Context
    */
-  public static async getAll(ctx: any) {
+  public static async getAll(ctx: Context) {
     const { includeCount, order, ...queryFind } = PluginSqlizeQuery.generate(
-      ctx,
+      ctx.request.query,
       Role,
       []
     )
