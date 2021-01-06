@@ -2,11 +2,10 @@ import models from 'models'
 import ms from 'ms'
 import jwt from 'jsonwebtoken'
 import createDirNotExist from 'utils/Directory'
-import { UserAttributes, LoginAttributes, TokenAttributes } from 'models/user'
+import { UserAttributes, LoginAttributes } from 'models/user'
 import { getUniqueCodev2 } from 'helpers/Common'
 import useValidation from 'helpers/useValidation'
 import schema from 'controllers/User/schema'
-import { isObject } from 'lodash'
 
 require('dotenv').config()
 
@@ -147,23 +146,11 @@ class AuthService {
    *
    * @param token
    */
-  public static async profile(token: TokenAttributes) {
-    if (isObject(token?.data)) {
-      const decodeToken = token?.data
-      const message = token?.message
-      const including = [{ model: Role }]
+  public static async profile(id: string) {
+    const including = [{ model: Role }]
+    const data = await User.findByPk(id, { include: including })
 
-      // @ts-ignore
-      const data = await User.findByPk(decodeToken?.id, { include: including })
-
-      return { code: 200, message, data }
-    }
-
-    return {
-      code: 401,
-      message: `${token?.message}. Please Re-login...`,
-      data: null,
-    }
+    return { code: 200, data }
   }
 }
 
