@@ -104,7 +104,7 @@ paths:
           description: 'Unauthorized'
         200:
           description: 'Login your account'
-  /auth/profile:
+  /profile:
     get:
       tags:
         - Auth
