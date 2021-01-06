@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { Context } from 'koa'
 import routes from 'routes/public'
-import { verifyToken } from 'helpers/Token'
 import BuildResponse from 'modules/Response/BuildResponse'
+import Authorization from 'middlewares/Authorization'
 import AuthService from './service'
 
 routes.post('/auth/sign-up', async (ctx: Context) => {
@@ -25,11 +24,11 @@ routes.post('/auth/sign-in', async (ctx: Context) => {
   ctx.body = buildResponse
 })
 
-routes.get('/auth/profile', async (ctx: Context) => {
-  const token = verifyToken(ctx.request.header)
-  // @ts-ignore
-  const { code, message, data } = await AuthService.profile(token)
-  const buildResponse = BuildResponse.get({ code, message, data })
+routes.get('/profile', Authorization, async (ctx: Context) => {
+  const { id } = ctx.state.user
+
+  const { code, data } = await AuthService.profile(id)
+  const buildResponse = BuildResponse.get({ code, data })
 
   ctx.status = code
   ctx.body = buildResponse
