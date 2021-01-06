@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](///compare/v2.2.0...v2.3.0) (2021-01-06)
+
+
+### Bug Fixes
+
+* auth controller profile ([449b64f](///commit/449b64f56e6adfbb852d996f84a502dda71b1333))
+* auth service profile ([9c51f1c](///commit/9c51f1c9c5ebfdb4a1e9f16f3f1aa48c6d0f5f0b))
+* change argument plugin sequelize query ([7a4baee](///commit/7a4baeee398d1e76e5423502c1b6ad03f2e3e9dc))
+* change filterable plugin sequelize query ([66ff7c8](///commit/66ff7c8879b76844d76f5ed611da60d15dcb546a))
+* docs swagger profile ([2a95b24](///commit/2a95b2435298d27f4ff6efa08d4426cc718b9387))
+* set state user on auth middleware ([2550ea6](///commit/2550ea6649b711fec705713c477da1fc4c295535))
+* update token helper ([551d035](///commit/551d0353d9805b911679421201c592a169fca664))
+
 ## [2.2.0](///compare/v2.1.0...v2.2.0) (2020-11-30)
 
 
