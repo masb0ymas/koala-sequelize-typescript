@@ -1,9 +1,10 @@
 import { Context, Next } from 'koa'
-import { verifyToken } from 'helpers/Token'
+import { getToken, verifyAccessToken } from 'helpers/Token'
 import { isEmpty } from 'lodash'
 
 async function Authorization(ctx: Context, next: Next) {
-  const token = verifyToken(ctx.request.header)
+  const getCurrentToken = getToken(ctx.request.header)
+  const token = verifyAccessToken(getCurrentToken)
 
   if (isEmpty(token?.data)) {
     ctx.status = 401
@@ -14,6 +15,7 @@ async function Authorization(ctx: Context, next: Next) {
     return
   }
 
+  ctx.state.user = token?.data
   await next()
 }
 
