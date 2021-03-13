@@ -130,14 +130,11 @@ class BuildResponse {
       })
     }
 
-    const statusCode = get(err, 'code', 400)
-    const message = get(err, 'message', 'Oops, Try Again!')
+    const code = get(err, 'statusCode', 500)
+    const message = get(err, 'message', 'something went wrong!')
 
     // Default Error
-    return this.baseResponse({
-      code: statusCode || 500,
-      message: message || 'something went wrong!',
-    })
+    return this.baseResponse({ code, message })
   }
 }
 
