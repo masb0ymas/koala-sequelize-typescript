@@ -40,9 +40,9 @@ routes.post('/auth/sign-in', async (ctx: Context) => {
 
 routes.get('/profile', Authorization, async (ctx: Context) => {
   try {
-    const userData = ctx.state.user
+    const { userLogin } = ctx.state
 
-    const data = await AuthService.profile(userData)
+    const data = await AuthService.profile(userLogin)
     const buildResponse = BuildResponse.get({ data })
 
     ctx.status = 200

@@ -15,7 +15,7 @@ async function Authorization(ctx: Context, next: Next) {
     return
   }
 
-  ctx.state.user = token?.data
+  ctx.state.userLogin = token?.data
   await next()
 }
 
