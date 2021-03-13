@@ -32,10 +32,10 @@ routes.post('/auth/sign-in', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
