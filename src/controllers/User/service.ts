@@ -3,6 +3,7 @@ import models from 'models'
 import useValidation from 'helpers/useValidation'
 import { UserAttributes } from 'models/user'
 import PluginSqlizeQuery from 'modules/SqlizeQuery/PluginSqlizeQuery'
+import ResponseError from 'modules/Response/ResponseError'
 import schema from './schema'
 
 const { User, Role } = models
@@ -40,17 +41,27 @@ class UserService {
   public static async getOne(id: string) {
     const data = await User.findByPk(id)
 
-    const code = 200
-    const message = 'data has been received'
-
     if (!data) {
-      return {
-        code: 404,
-        message: 'Data not found or has been deleted!',
-      }
+      throw new ResponseError.BadRequest(
+        'user data not found or has been deleted!'
+      )
     }
 
-    return { code, message, data }
+    return data
+  }
+
+  /**
+   *
+   * @param email
+   */
+  public static async validateUserEmail(email: string) {
+    const data = await User.findOne({ where: { email } })
+
+    if (data) {
+      throw new ResponseError.BadRequest('email address already in use')
+    }
+
+    return null
   }
 
   /**
@@ -70,18 +81,16 @@ class UserService {
    * @param formData
    */
   public static async update(id: string, formData: UserAttributes) {
-    const { code, message, data } = await this.getOne(id)
+    const data = await this.getOne(id)
 
-    if (data) {
-      const value = useValidation(schema.create, {
-        ...data.toJSON(),
-        ...formData,
-      })
+    const value = useValidation(schema.create, {
+      ...data.toJSON(),
+      ...formData,
+    })
 
-      await data.update(value || {})
-    }
+    await data.update(value || {})
 
-    return { code, message, data }
+    return data
   }
 
   /**
@@ -89,13 +98,9 @@ class UserService {
    * @param id
    */
   public static async delete(id: string) {
-    const { code, message, data } = await this.getOne(id)
+    const data = await this.getOne(id)
 
-    if (data) {
-      await data.destroy()
-    }
-
-    return { code, message }
+    await data.destroy()
   }
 }
 

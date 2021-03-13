@@ -5,50 +5,90 @@ import BuildResponse from 'modules/Response/BuildResponse'
 import UserService from './service'
 
 routes.get('/user', Authorization, async (ctx: Context) => {
-  const { message, data, total } = await UserService.getAll(ctx)
-  const buildResponse = BuildResponse.get({ message, data, total })
+  try {
+    const data = await UserService.getAll(ctx)
+    const buildResponse = BuildResponse.get(data)
 
-  ctx.status = 200
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.get('/user/:id', Authorization, async (ctx: Context) => {
-  const { id } = ctx.params
+  try {
+    const { id } = ctx.params
 
-  const { code, message, data } = await UserService.getOne(id)
-  const buildResponse = BuildResponse.get({ code, message, data })
+    const data = await UserService.getOne(id)
+    const buildResponse = BuildResponse.get({ data })
 
-  ctx.status = code
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.post('/user', Authorization, async (ctx: Context) => {
-  const formData = ctx.request.body
+  try {
+    const formData = ctx.request.body
 
-  const data = await UserService.create(formData)
-  const buildResponse = BuildResponse.created({ data })
+    const data = await UserService.create(formData)
+    const buildResponse = BuildResponse.created({ data })
 
-  ctx.status = 201
-  ctx.body = buildResponse
+    ctx.status = 201
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.put('/user/:id', Authorization, async (ctx: Context) => {
-  const { id } = ctx.params
-  const formData = ctx.request.body
+  try {
+    const { id } = ctx.params
+    const formData = ctx.request.body
 
-  const { code, message, data } = await UserService.update(id, formData)
-  const buildResponse = BuildResponse.updated({ code, message, data })
+    const data = await UserService.update(id, formData)
+    const buildResponse = BuildResponse.updated({ data })
 
-  ctx.status = 200
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.delete('/user/:id', Authorization, async (ctx: Context) => {
-  const { id } = ctx.params
+  try {
+    const { id } = ctx.params
 
-  const { code, message } = await UserService.delete(id)
-  const buildResponse = BuildResponse.deleted({ code, message })
+    await UserService.delete(id)
+    const buildResponse = BuildResponse.deleted({})
 
-  ctx.status = 200
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
