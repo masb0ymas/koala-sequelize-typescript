@@ -14,10 +14,9 @@ routes.post('/auth/sign-up', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -32,10 +31,9 @@ routes.post('/auth/sign-in', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -50,10 +48,9 @@ routes.get('/profile', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
