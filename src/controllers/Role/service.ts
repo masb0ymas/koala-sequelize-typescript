@@ -3,6 +3,7 @@ import models from 'models'
 import useValidation from 'helpers/useValidation'
 import { RoleAttributes } from 'models/roles'
 import PluginSqlizeQuery from 'modules/SqlizeQuery/PluginSqlizeQuery'
+import ResponseError from 'modules/Response/ResponseError'
 import schema from './schema'
 
 const { Role } = models
@@ -38,17 +39,13 @@ class RoleService {
   public static async getOne(id: string) {
     const data = await Role.findByPk(id)
 
-    const code = 200
-    const message = 'data has been received'
-
     if (!data) {
-      return {
-        code: 404,
-        message: 'Data not found or has been deleted!',
-      }
+      throw new ResponseError.NotFound(
+        'role data not found or has been deleted!'
+      )
     }
 
-    return { code, message, data }
+    return data
   }
 
   /**
@@ -68,18 +65,16 @@ class RoleService {
    * @param formData
    */
   public static async update(id: string, formData: RoleAttributes) {
-    const { code, message, data } = await this.getOne(id)
+    const data = await this.getOne(id)
 
-    if (data) {
-      const value = useValidation(schema.create, {
-        ...data.toJSON(),
-        ...formData,
-      })
+    const value = useValidation(schema.create, {
+      ...data.toJSON(),
+      ...formData,
+    })
 
-      await data.update(value || {})
-    }
+    await data.update(value || {})
 
-    return { code, message, data }
+    return data
   }
 
   /**
@@ -87,13 +82,11 @@ class RoleService {
    * @param id
    */
   public static async delete(id: string) {
-    const { code, message, data } = await this.getOne(id)
+    const data = await this.getOne(id)
 
     if (data) {
       await data.destroy()
     }
-
-    return { code, message }
   }
 }
 
