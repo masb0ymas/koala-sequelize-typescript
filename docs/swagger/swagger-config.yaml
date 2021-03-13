@@ -1,7 +1,7 @@
 openapi: '3.0.1'
 info:
   version: '1.0.0'
-  title: 'Api KoaLaa Documentation'
+  title: 'Api Koa Sequelize TypeScript Documentation'
   description: 'Api KOA, Sequelize and TypeScript'
 servers:
   - url: 'http://localhost:8000/v1'
