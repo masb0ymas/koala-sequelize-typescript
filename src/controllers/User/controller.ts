@@ -12,10 +12,9 @@ routes.get('/user', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -30,10 +29,9 @@ routes.get('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -48,10 +46,9 @@ routes.post('/user', Authorization, async (ctx: Context) => {
     ctx.status = 201
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -67,10 +64,9 @@ routes.put('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -85,10 +81,9 @@ routes.delete('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { statusCode } = err
     const buildResponse = BuildResponse.error(err)
 
-    ctx.status = statusCode || buildResponse.code
+    ctx.status = buildResponse.code
     ctx.body = buildResponse
   }
 })
