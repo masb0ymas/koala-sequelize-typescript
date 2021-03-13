@@ -12,10 +12,10 @@ routes.get('/role', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -30,10 +30,10 @@ routes.get('/role/:id', async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -48,10 +48,10 @@ routes.post('/role', Authorization, async (ctx: Context) => {
     ctx.status = 201
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -67,10 +67,10 @@ routes.put('/role/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -85,10 +85,10 @@ routes.delete('/role/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
