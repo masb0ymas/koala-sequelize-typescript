@@ -6,10 +6,13 @@ import { UserAttributes, LoginAttributes } from 'models/user'
 import { getUniqueCodev2 } from 'helpers/Common'
 import useValidation from 'helpers/useValidation'
 import schema from 'controllers/User/schema'
+import UserService from 'controllers/User/service'
+import ResponseError from 'modules/Response/ResponseError'
 
 require('dotenv').config()
 
 const { User, Role } = models
+const including = [{ model: Role }]
 
 const { JWT_SECRET_ACCESS_TOKEN, JWT_SECRET_REFRESH_TOKEN }: any = process.env
 
@@ -39,6 +42,9 @@ class AuthService {
    * @param formData
    */
   public static async signUp(formData: UserAttributes) {
+    // check duplicate email
+    await UserService.validateUserEmail(formData.email)
+
     const generateToken = {
       code: getUniqueCodev2(),
     }
@@ -71,86 +77,73 @@ class AuthService {
       where: { email },
     })
 
-    if (userData) {
-      /* User active proses login */
-      if (userData.active) {
-        // @ts-ignore
-        const comparePassword = userData.comparePassword(password)
+    if (!userData) {
+      throw new ResponseError.NotFound('account not found or has been deleted')
+    }
 
-        if (comparePassword) {
-          // modif payload token
-          const payloadToken = {
-            id: userData.id,
-            nama: userData.fullName,
-            active: userData.active,
-          }
+    /* User active proses login */
+    if (userData.active) {
+      // @ts-ignore
+      const comparePassword = await userData.comparePassword(password)
 
-          // Access Token
-          const accessToken = jwt.sign(
-            JSON.parse(JSON.stringify(payloadToken)),
-            JWT_SECRET_ACCESS_TOKEN,
-            {
-              expiresIn,
-            }
-          )
+      if (comparePassword) {
+        // modif payload token
+        const payloadToken = {
+          id: userData.id,
+          nama: userData.fullName,
+          active: userData.active,
+        }
 
-          // Refresh Token
-          const refreshToken = jwt.sign(
-            JSON.parse(JSON.stringify(payloadToken)),
-            JWT_SECRET_REFRESH_TOKEN,
-            {
-              expiresIn: JWT_REFRESH_TOKEN_EXPIRED,
-            }
-          )
-
-          // create directory
-          await createDirectory(userData.id)
-          const data = {
-            accessToken,
+        // Access Token
+        const accessToken = jwt.sign(
+          JSON.parse(JSON.stringify(payloadToken)),
+          JWT_SECRET_ACCESS_TOKEN,
+          {
             expiresIn,
-            tokenType: 'Bearer',
-            refreshToken,
           }
+        )
 
-          return {
-            code: 200,
-            message: 'access token has been received!',
-            data,
+        // Refresh Token
+        const refreshToken = jwt.sign(
+          JSON.parse(JSON.stringify(payloadToken)),
+          JWT_SECRET_REFRESH_TOKEN,
+          {
+            expiresIn: JWT_REFRESH_TOKEN_EXPIRED,
           }
+        )
+
+        // create directory
+        await createDirectory(userData.id)
+        const data = {
+          accessToken,
+          expiresIn,
+          tokenType: 'Bearer',
+          refreshToken,
         }
 
         return {
-          code: 400,
-          message: 'incorrect email or password!',
-          data: null,
+          code: 200,
+          message: 'Login successfully',
+          data,
         }
       }
 
-      /* User not active return error confirm email */
-      return {
-        code: 400,
-        message:
-          'please check your email account to verify your email and continue the registration process.',
-        data: null,
-      }
+      throw new ResponseError.BadRequest('incorrect email or password!')
     }
 
-    return {
-      code: 404,
-      message: 'data not found or has been deleted',
-      data: null,
-    }
+    /* User not active return error confirm email */
+    throw new ResponseError.BadRequest(
+      'please check your email account to verify your email and continue the registration process.'
+    )
   }
 
   /**
    *
-   * @param token
+   * @param userData
    */
-  public static async profile(id: string) {
-    const including = [{ model: Role }]
-    const data = await User.findByPk(id, { include: including })
-
-    return { code: 200, data }
+  public static async profile(userData: UserAttributes) {
+    const data = await User.findByPk(userData.id, { include: including })
+    return data
   }
 }
 

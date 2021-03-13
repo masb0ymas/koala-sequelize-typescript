@@ -5,31 +5,55 @@ import Authorization from 'middlewares/Authorization'
 import AuthService from './service'
 
 routes.post('/auth/sign-up', async (ctx: Context) => {
-  const formData = ctx.request.body
+  try {
+    const formData = ctx.request.body
 
-  const { message, data } = await AuthService.signUp(formData)
-  const buildResponse = BuildResponse.get({ message, data })
+    const data = await AuthService.signUp(formData)
+    const buildResponse = BuildResponse.get(data)
 
-  ctx.status = 200
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.post('/auth/sign-in', async (ctx: Context) => {
-  const formData = ctx.request.body
+  try {
+    const formData = ctx.request.body
 
-  const { code, message, data } = await AuthService.signIn(formData)
-  const buildResponse = BuildResponse.get({ code, message, data })
+    const data = await AuthService.signIn(formData)
+    const buildResponse = BuildResponse.get(data)
 
-  ctx.status = code
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
 
 routes.get('/profile', Authorization, async (ctx: Context) => {
-  const { id } = ctx.state.user
+  try {
+    const userData = ctx.state.user
 
-  const { code, data } = await AuthService.profile(id)
-  const buildResponse = BuildResponse.get({ code, data })
+    const data = await AuthService.profile(userData)
+    const buildResponse = BuildResponse.get({ data })
 
-  ctx.status = code
-  ctx.body = buildResponse
+    ctx.status = 200
+    ctx.body = buildResponse
+  } catch (err) {
+    const { message, statusCode: code } = err
+    const buildResponse = BuildResponse.get({ code, message })
+
+    ctx.status = code
+    ctx.body = buildResponse
+  }
 })
