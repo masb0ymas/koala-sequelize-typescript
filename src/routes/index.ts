@@ -19,11 +19,14 @@ router.get('/', (ctx: BaseContext) => {
 })
 
 router.get('/v1', (ctx: BaseContext) => {
-  ctx.status = 403
-  ctx.body = {
-    code: 403,
+  const code = 403
+  const buildResponse = BuildResponse.get({
+    code,
     message: 'forbidden, wrong access endpoint',
-  }
+  })
+
+  ctx.status = code
+  ctx.body = buildResponse
 })
 
 // Public Routes
