@@ -4,7 +4,7 @@ import Authorization from 'middlewares/Authorization'
 import BuildResponse from 'modules/Response/BuildResponse'
 import UserService from './service'
 
-routes.get('/user', Authorization, async (ctx: Context) => {
+routes.get('/user', async (ctx: Context) => {
   try {
     const data = await UserService.getAll(ctx)
     const buildResponse = BuildResponse.get(data)
@@ -12,10 +12,10 @@ routes.get('/user', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -30,10 +30,10 @@ routes.get('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -48,10 +48,10 @@ routes.post('/user', Authorization, async (ctx: Context) => {
     ctx.status = 201
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -67,10 +67,10 @@ routes.put('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
@@ -85,10 +85,10 @@ routes.delete('/user/:id', Authorization, async (ctx: Context) => {
     ctx.status = 200
     ctx.body = buildResponse
   } catch (err) {
-    const { message, statusCode: code } = err
-    const buildResponse = BuildResponse.get({ code, message })
+    const { statusCode } = err
+    const buildResponse = BuildResponse.error(err)
 
-    ctx.status = code
+    ctx.status = statusCode || buildResponse.code
     ctx.body = buildResponse
   }
 })
