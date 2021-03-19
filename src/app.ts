@@ -8,6 +8,7 @@ import { koaSwagger } from 'koa2-swagger-ui'
 import yaml2js from 'yamljs'
 import _path from 'path'
 import router from 'routes/index'
+import KoaRateLimit from 'middlewares/KoaRateLimit'
 
 const app = new Koa()
 
@@ -18,8 +19,10 @@ app.use(
 )
 app.use(cors())
 app.use(logger())
-app.use(bodyParser())
+app.use(bodyParser({ formLimit: '100mb', jsonLimit: '100mb' }))
 app.use(serve(_path.join(`${__dirname}/../`, 'public')))
+
+app.use(KoaRateLimit)
 
 app.use(router.routes())
 app.use(router.allowedMethods())
