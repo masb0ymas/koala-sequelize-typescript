@@ -73,7 +73,7 @@
     "pg-hstore": "^2.3.3",
     "rate-limiter-flexible": "^2.2.1",
     "redis": "^3.0.2",
-    "sequelize": "^6.5.1",
+    "sequelize": "^6.6.1",
     "yamljs": "^0.3.0",
     "yup": "^0.31.0"
   },
