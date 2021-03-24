@@ -1,6 +1,16 @@
-import fs from 'fs'
+import { isEmpty } from 'lodash'
 
-const invalidValues = [null, undefined, '', false, 0]
+const invalidValues = [
+  null,
+  undefined,
+  '',
+  false,
+  0,
+  'false',
+  '0',
+  'null',
+  'undefined',
+]
 
 /**
  *
@@ -19,17 +29,58 @@ function getUniqueCodev2(length = 32) {
 
 /**
  *
- * @param path - path file template html
- * @param callback
+ * @param arrayData
  */
-function readHTMLFile(path: any, callback: any) {
-  fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
-    if (err) {
-      callback(err)
-    } else {
-      callback(null, html)
+function arrayFormatter(arrayData: string | string[]) {
+  // check if data not empty
+  if (!isEmpty(arrayData)) {
+    // check if data is array, format: ['1', '2']
+    if (Array.isArray(arrayData)) {
+      return arrayData
     }
-  })
+
+    // format: "['1', '2']"
+    const parseJsonArray = JSON.parse(arrayData)
+    if (Array.isArray(parseJsonArray)) {
+      return parseJsonArray
+    }
+
+    return []
+  }
+
+  return []
 }
 
-export { getUniqueCodev2, readHTMLFile, invalidValues }
+/**
+ *
+ * @param value
+ */
+function validateEmpty(value: any) {
+  const emptyValues = [null, undefined, '', 'null', 'undefined']
+
+  if (emptyValues.includes(value)) {
+    return null
+  }
+
+  return value
+}
+
+/**
+ *
+ * @param value
+ */
+function validateBoolean(value: string | boolean | number | any) {
+  if (invalidValues.includes(value)) {
+    return false
+  }
+
+  return true
+}
+
+export {
+  getUniqueCodev2,
+  invalidValues,
+  arrayFormatter,
+  validateEmpty,
+  validateBoolean,
+}
