@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](///compare/v2.3.0...v2.4.0) (2021-03-24)
+
+
+### Features
+
+* **config:** add base url ([8d4de76](///commit/8d4de760e08d6e29d929b47f4eb3c8ba2507118a))
+* **config:** add redis ([6b19de1](///commit/6b19de172e260a64fef5614370109f28f238583b))
+* **helper:** add file helper ([e813d0c](///commit/e813d0ca1f636d56f2eeae23c486ce5c2a886a36))
+* **helper:** add redis ([f76c36b](///commit/f76c36b78ea087d02eca8efb216693df7df67a5b))
+* **helper:** add send mail helper ([fe1f685](///commit/fe1f685214bff19ce7e2f1335332d1773e715a25))
+* **lib:** add rate limit flexible ([f97f916](///commit/f97f91687ff942aa85f859f0283bc31f69b825f7))
+* **middleware:** add koa rate limit ([61cf01d](///commit/61cf01dcf04157f1d06b820cbda1d18b5884e265))
+* **templates:** add email templates ([0bdadf9](///commit/0bdadf98628112b4ac0913823e402057433ed55e))
+* add deploy with docker ([1dfb861](///commit/1dfb861900cb7c57209b8911eba4698cfe27ffc3))
+* add package koa multer ([629aacf](///commit/629aacf51aa06e862eac005c27ed33910f46eba0))
+
+
+### Bug Fixes
+
+* **helper:** improve common helper ([9ba87c8](///commit/9ba87c80cc7dc9bdb5d86d7c6d7f1fa4f46a8dd7))
+* **model:** add interface email attributes ([0672a13](///commit/0672a13044efba0ab7c253dec5011f0672c0b8f0))
+* add promise compare password ([4aedef2](///commit/4aedef292820edaf0bc3ed19267229d839a7ca28))
+* auth controller ([556ec0f](///commit/556ec0f009e6a0208000c0d982f3e1723239d00a))
+* change config email to email provider ([f18f978](///commit/f18f9780c1db89cbbb28ac2a569eb080c18ac9e2))
+* change default page docs swagger ([6bdd2fc](///commit/6bdd2fc13852309850fadb0e6122cd966974b9b6))
+* change Rediss to redis client ([4be3fc3](///commit/4be3fc3da665c909aad175b3c838b142ce9a565e))
+* implementation middleware rate limit ([ea0ce6a](///commit/ea0ce6a0a91d99625c63847c20d36347d91a5152))
+* import redis ([4e4159b](///commit/4e4159b9568120f258f50f6900760fc0633e3487))
+* improve auth controller ([a957171](///commit/a9571713e7e9dc2c79b5da25d194e7534ac95f0a))
+* improve role controller ([e5332c7](///commit/e5332c7a30fe36b317ed1f17b3b40dc2bfa6c0c7))
+* improve user controller ([6acfaf6](///commit/6acfaf6b1cf5d470748ee9a0fe5b6ac20443d60a))
+* response error ([8f3a6ca](///commit/8f3a6ca945a71cc9bd3df73c559442d54c9c45a6))
+* retrun default response error ([d14d112](///commit/d14d1125d5d8666a9486a91d3cd5cf088485d7e5))
+* return forbidden endpoint ([8451607](///commit/845160717a0dfb921743bb8f6b5b39c0d1b2b5f6))
+* role controller ([9f4132e](///commit/9f4132efe99cc1a62bfbe172d6fbf1256f065536))
+* route public ([480482e](///commit/480482e30bfca51a06981c6ce09a173d71a79ee2))
+* state user login ([7942683](///commit/7942683304c90b44b44afd651bf59ad2c404a6e8))
+* title docs swagger ([d62c0d0](///commit/d62c0d0f752d3d74ec3a87f0a3dce105bb9a64bb))
+* update auth controller ([5390679](///commit/53906793b571b5424e402302a6f65d1afc70cd65))
+* update package ([2044857](///commit/204485712ba05fc40dcb691c6722c35846360577))
+* update role controller ([d56ba8a](///commit/d56ba8a997af6188052daa83652d4ad4271804e4))
+* update script deploy ([32be224](///commit/32be224125e75c6d4c3cce82f0716fdad0034026))
+* update user controller ([7db8047](///commit/7db804772fcd29640f2d3c77eae6a773ea5464c5))
+* user controller ([b5f0b6e](///commit/b5f0b6e851fcfa9fd2d4ae37f46731603aa47c25))
+* **config:** improve fetcher ([923659d](///commit/923659dd428a9fc1434a43cde99b97b512c58573))
+
 ## [2.3.0](///compare/v2.2.0...v2.3.0) (2021-01-06)
 
 
