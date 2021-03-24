@@ -28,6 +28,11 @@ export interface LoginAttributes {
   password: string
 }
 
+export interface EmailAttributes {
+  email: string
+  fullName: string
+}
+
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
 interface UserInstance
