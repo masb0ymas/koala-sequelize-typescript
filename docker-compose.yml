@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+    container_name: koa_app
+    depends_on:
+      - db
+      - redis
+    restart: always
+    ports:
+      - '${PORT}:8000'
+    working_dir: /var/www
+    networks:
+      - koa_network
+
+  db:
+    image: mariadb
+    container_name: koa_db
+    volumes:
+      - ./storage/mariadb-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PROD_DB_PASSWORD}
+      MYSQL_DATABASE: ${PROD_DB_DATABASE}
+      MYSQL_USER: ${PROD_DB_USERNAME}
+      MYSQL_PASSWORD: ${PROD_DB_PASSWORD}
+    restart: always
+    ports:
+      - '3307:3306'
+    networks:
+      - koa_network
+
+  redis:
+    image: 'redis:alpine'
+    container_name: koa_redis
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    ports:
+      - '${REDIS_PORT}:6379'
+    volumes:
+      - ./storage/redis-data:/var/lib/redis
+    restart: always
+    networks:
+      - koa_network
+
+  adminer:
+    image: adminer
+    container_name: koa_adminer
+    restart: always
+    depends_on:
+      - db
+    environment:
+      ADMINER_DESIGN: flat
+    ports:
+      - '${ADMINER_PORT}:8080'
+    networks:
+      - koa_network
+
+networks:
+  koa_network:
+    driver: bridge
