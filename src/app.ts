@@ -9,6 +9,7 @@ import yaml2js from 'yamljs'
 import _path from 'path'
 import router from 'routes/index'
 import KoaRateLimit from 'middlewares/KoaRateLimit'
+import userAgent from 'koa-useragent'
 
 const app = new Koa()
 
@@ -22,6 +23,7 @@ app.use(logger())
 app.use(bodyParser({ formLimit: '100mb', jsonLimit: '100mb' }))
 app.use(serve(_path.join(`${__dirname}/../`, 'public')))
 
+app.use(userAgent)
 app.use(KoaRateLimit)
 
 app.use(router.routes())
