@@ -55,7 +55,7 @@
     "dotenv": "^8.2.0",
     "googleapis": "^68.0.0",
     "handlebars": "^4.7.6",
-    "ioredis": "^4.24.3",
+    "ioredis": "^4.27.2",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
